@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--mapper 是当前文件的根标签 必须的
+   namespace 要求你使用dao接口的全限定名称 dao接口路径-->
+
+<!--重点-->
+<!--重点-->
+<!--重点-->
+
+<mapper namespace="org.example.dao.UserDao">
+
+    <!--select 表示查询-->
+    <!--update 表示更新-->
+    <!--insert 表示插入-->
+    <!--delete 表示删除-->
+
+    <!--
+   id 表示你要执行的sql语句的唯一标识 ，mybatis会使用这个id的值来查找要执行的语句
+    值是 接口的方法名称。
+
+   resultType : 返回值的类型
+               值是对象位置
+-->
+
+    <select id="checkOne" resultType="org.example.domain.User">
+      select * from user where username = #{username}
+    </select>
+
+    <select id="check" resultType="org.example.domain.User">
+       select * from user
+    </select>
+
+    <insert id="increase">
+        insert into user value(#{username},#{password})
+    </insert>
+
+    <update id="change">
+        update user set password = #{password} where username = #{username} ;
+    </update>
+
+    <delete id="delete">
+        delete from user where username = #{username} and password = #{password};
+    </delete>
+
+
+</mapper>
